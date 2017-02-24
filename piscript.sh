@@ -172,3 +172,5 @@ nexutil --help
 echo "\n\nrun nexutil --help to see this screen"
 echo "build finished"
 echo "$(tput bel)$(tput sgr0)"
+echo "exiting su"
+exit
