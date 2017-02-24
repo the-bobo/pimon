@@ -174,3 +174,5 @@ echo "build finished"
 echo "$(tput bel)$(tput sgr0)"
 echo "exiting su"
 exit
+
+echo "to setup BriarIDS go to: https://github.com/musicmancorley/BriarIDS/wiki/Installation"
