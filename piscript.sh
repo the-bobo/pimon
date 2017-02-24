@@ -24,6 +24,21 @@
 # /usr/share/doc/xserver-xorg-video-intel/xorg.conf
 # this lets you continue to use the -intel driver
 
+####
+# warning
+####
+echo "You should already have internet setup and be running headless (no desktop)"
+read -p "Are you sure you want to proceed? [Y/n]" choice
+case "$choice" in 
+	y|Y ) echo "yes" && $choicevar = "y";;
+	n|N ) echo "no" && $choicevar = "n";;
+esac
+
+if [ "$choice" != "y" ]
+then
+	echo "No detected, exiting"
+	exit()
+fi
 
 ####
 # setup
@@ -34,6 +49,8 @@
 # we should not do this, is bleeding edge
 # sudo apt-get install -reinstall raspberrypi-bootloader
 # and a reboot will revert to stable kernel
+
+echo "entering setup"
 
 if [ ! -a bootflag.txt ]
 then
