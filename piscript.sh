@@ -56,7 +56,6 @@ if [ ! -f bootflag.txt ]
 then
 	echo "will write 0 to bootflag.txt"
 	echo '0' > bootflag.txt
-	exit 1
 fi
 
 sudo apt-get update
