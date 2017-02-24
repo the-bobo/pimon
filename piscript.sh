@@ -30,8 +30,8 @@
 echo "You should already have internet setup and be running headless (no desktop)"
 read -p "Are you sure you want to proceed? [Y/n]" choice
 case "$choice" in 
-	y|Y ) echo "yes" && choice = "y";;
-	n|N ) echo "no" && choice = "n";;
+	y|Y ) echo "yes" && choice="y";;
+	n|N ) echo "no" && choice="n";;
 esac
 
 if [ "$choice" != "y" ]
