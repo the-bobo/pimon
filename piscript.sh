@@ -67,10 +67,10 @@ sudo apt-get dist-upgrade -y
 echo "apt-get update and apt-get dist-upgrade done"
 echo "will reboot if we have not rebooted once"
 
-#read -r line < bootflag.txt
-line=$(head -n 1 bootflag.txt)
-echo "the value of line is: $line"
-sleep 5s
+#line=$(head -n 1 bootflag.txt)
+#echo "the value of line is: $line"
+#sleep 5s
+
 if [ "$line" == "0" ]
 then
 	echo "1" > bootflag.txt
@@ -103,7 +103,7 @@ sudo apt-get install aircrack-ng -y
 # manual backups
 ####
 
-$backupdir = "./brcm-backups/"
+backupdir="./brcm-backups/"
 
 if [ ! -d $backupdir ]
 then
