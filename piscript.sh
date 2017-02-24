@@ -71,6 +71,8 @@ if [ "$line" == "0" ]
 then
 	echo "1" > bootflag.txt
 	echo "rebooting"
+	echo "you will have to run the script again to continue"
+	sleep 5s
 	sudo reboot
 fi
 
