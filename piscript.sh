@@ -63,10 +63,14 @@ sudo apt-get dist-upgrade -y
 # should reboot after this
 # to load updated kernel
 
+echo "apt-get update and apt-get dist-upgrade done"
+echo "will reboot if we have not rebooted once"
+
 while IFS='' read -r line || [[ -n "$line" ]]; do
 	if [ "$line" == "0" ]
 	then
 		echo "1" > bootflag.txt
+		echo "rebooting"
 		sudo reboot
 	fi
 done
