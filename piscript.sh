@@ -37,7 +37,7 @@ esac
 if [ "$choice"!="y" ]
 then
 	echo "No detected, exiting"
-	exit()
+	exit 1
 fi
 
 ####
