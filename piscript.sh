@@ -34,7 +34,7 @@ case "$choice" in
 	n|N ) echo "no" && choice="n";;
 esac
 
-if [ $choice!="y" ]
+if [ $choice != "y" ]
 then
 	echo "No detected, exiting"
 	exit 1
