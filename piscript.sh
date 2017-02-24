@@ -36,7 +36,7 @@ esac
 
 if [ "$choice"!="y" ]
 then
-	echo "the value of choice is: $choice"
+	echo "the value of choice is: $choice ok"
 	echo "No detected, exiting"
 	exit 1
 fi
