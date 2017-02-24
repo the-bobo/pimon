@@ -66,14 +66,16 @@ sudo apt-get dist-upgrade -y
 echo "apt-get update and apt-get dist-upgrade done"
 echo "will reboot if we have not rebooted once"
 
-while IFS='' read -r line || [[ -n "$line" ]]; do
-	if [ "$line" == "0" ]
-	then
-		echo "1" > bootflag.txt
-		echo "rebooting"
-		sudo reboot
-	fi
-done
+read -r line < bootflag.txt
+if [ "$line" == "0" ]
+then
+	echo "1" > bootflag.txt
+	echo "rebooting"
+	sudo reboot
+fi
+
+echo "not rebooting, continuing"
+
 
 sudo apt-get install pciutils -y
 # gives us lspci command
