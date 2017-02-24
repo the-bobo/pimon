@@ -52,7 +52,7 @@ fi
 
 echo "entering setup"
 
-if [ ! -a bootflag.txt ]
+if [ ! -f bootflag.txt ]
 then
 	echo "will write 0 to bootflag.txt"
 	echo '0' > bootflag.txt
