@@ -175,4 +175,12 @@ echo "$(tput bel)$(tput sgr0)"
 echo "exiting su"
 exit
 
+echo "###########################"
+echo "done building and installing nexutil"
+echo "start X (desktop) for next steps: startx"
+echo "###########################"
+
 echo "to setup BriarIDS go to: https://github.com/musicmancorley/BriarIDS/wiki/Installation"
+echo "you may need to sudo python BriarIDS.py twice, first to install qt dependencies, then to install BriarIDS"
+echo "afterwards, choose Install Suricata (first button) on the gui"
+echo "run the tail command to view install log in another terminal window. Suricata takes a while."
