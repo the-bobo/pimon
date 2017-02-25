@@ -58,6 +58,11 @@ then
 	echo '0' > bootflag.txt
 fi
 
+echo "updating system files (apt-get update apt-get dist-upgrade)"
+echo "this step takes ~15-20min on a fresh Raspbian install"
+echo "$(tput bel)$(tput sgr0)"
+sleep 5s
+
 sudo apt-get update
 sudo apt-get dist-upgrade -y
 # should take about 15-20min
@@ -74,9 +79,10 @@ echo "will reboot if we have not rebooted once"
 if [ "$line" == "0" ]
 then
 	echo "1" > bootflag.txt
-	echo "rebooting"
+	echo "rebooting in 20 seconds"
 	echo "you will have to run the script again to continue"
-	sleep 5s
+	echo "$(tput bel)$(tput sgr0)"
+	sleep 20s
 	sudo reboot
 fi
 
@@ -114,7 +120,7 @@ fi
 
 if [ -d $backupdir ]
 then
-	echo "backup directory already exists"
+	echo "backup directory ./brcm-backups/ already exists"
 	echo "not overwriting"
 fi
 
@@ -122,12 +128,18 @@ fi
 # nexmon
 ####
 
-sudo apt install raspberrypi-kernel-headers git libgmp3-dev gawk
+echo "going to fetch and build nexmon"
+echo "$(tput bel)$(tput sgr0)"
+sleep 5s
+
+sudo apt install -y raspberrypi-kernel-headers git libgmp3-dev gawk
 # git and gawk already installed 
 # on my machine by this point
 # apt install should just no-op them
 
 git clone https://github.com/seemoo-lab/nexmon.git
+
+sudo su
 
 cd nexmon
 
@@ -143,7 +155,11 @@ make backup-firmware
 
 make install-firmware
 
-cd utilities/nexutil/
+cd ../../../../utilities/libnexio/
+
+make
+
+cd ../nexutil/
 
 make && make install
 
@@ -151,4 +167,20 @@ make && make install
 # this step is optional
 # may break things
 
-echo "run nexutil to see commands"
+nexutil --help
+
+echo "\n\nrun nexutil --help to see this screen"
+echo "build finished"
+echo "$(tput bel)$(tput sgr0)"
+echo "exiting su"
+exit
+
+echo "###########################"
+echo "done building and installing nexutil"
+echo "start X (desktop) for next steps: startx"
+echo "###########################"
+
+echo "to setup BriarIDS go to: https://github.com/musicmancorley/BriarIDS/wiki/Installation"
+echo "you may need to sudo python BriarIDS.py twice, first to install qt dependencies, then to install BriarIDS"
+echo "afterwards, choose Install Suricata (first button) on the gui"
+echo "run the tail command to view install log in another terminal window. Suricata takes a while."
