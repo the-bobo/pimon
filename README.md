@@ -4,12 +4,12 @@ to run installer:
 `bash pimon.sh`
 
 to run nexutil:  
-`sudo su`
-`nexutil`
+`sudo su`  
+`nexutil`  
 
 to run after reboot:  
 get to nexmon/patches/bcm43438/7_45_41_26/nexmon  
-`sudo su`
+`sudo su`  
 `rmmod brcmfmac` # removes regular broadcom driver module  
 `insmod brcmfmac/brcmfmac.ko` # installs new driver module  
 `nexutil -m2` # places WiFi into monitor mode  
